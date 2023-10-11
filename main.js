@@ -1,7 +1,7 @@
 const form = document.querySelector("#form-newEvent");
 const eventsList = document.querySelector("#events");
-const newEvent = document.querySelector("#event-input");
-const dateEvent = document.querySelector("#dateInput");
+const eventInput = document.querySelector("#event-input");
+const eventDate = document.querySelector("#dateInput");
 
 const stateEvents = [];
 
@@ -10,20 +10,34 @@ const handlerSubmit = (e) => {
     addEvent();
 }
 
+const handlerInputSpace = (e) => {
+    if(e.code === "Space" && eventInput.value.length <= 1)
+        eventInput.value = "";
+}
+
 function addEvent() {
     if(isValid()){
         const event = {
-            eventTitle: newEvent.value,
-            dateE: dateEvent.value,
+            titleEvent: eventInput.value,
+            dateEvent: eventDate.value,
             idEvent: Date.now(),
         }
         stateEvents.push(event);
-        console.log(stateEvents);
+        setEvent(event);
     }
 }
 
 const isValid = () => {
-    return newEvent.value.length && dateEvent.value.length;
+    return eventInput.value.length && eventDate.value.length;
 }
 
+const setEvent = (event) => {
+    const div = document.createElement("div");
+    const node = document.createTextNode("New");
+    div.appendChild(node);
+    eventsList.appendChild(div);
+}
+
+
 form.addEventListener("submit", handlerSubmit);
+eventInput.addEventListener("keydown", handlerInputSpace);
