@@ -17,24 +17,39 @@ const handlerInputSpace = (e) => {
 
 function addEvent() {
     if(isValid()){
+        const temo = new Date(eventDate.value);
+        const tt = new Date(Date.now());
+        console.log(temo);
+        console.log(tt);
+        console.log(temo - tt);
         const event = {
             titleEvent: eventInput.value,
             dateEvent: eventDate.value,
             idEvent: Date.now(),
         }
+        // eventInput.value = "";
+        // eventDate.value = "";
         stateEvents.push(event);
         setEvent(event);
     }
 }
 
 const isValid = () => {
-    return eventInput.value.length && eventDate.value.length;
+    return eventInput.value.length && eventDate.value.length && (new Date(eventDate.value) > new Date(Date.now()));
 }
 
 const setEvent = (event) => {
     const div = document.createElement("div");
-    const node = document.createTextNode("New");
-    div.appendChild(node);
+    const divTimer = document.createElement("div");
+    const nodeTime = document.createTextNode(event.dateEvent);
+    divTimer.appendChild(nodeTime);
+
+    const para = document.createElement("p");
+    const node = document.createTextNode(event.titleEvent);
+    para.appendChild(node);
+    div.appendChild(divTimer);
+    div.appendChild(para);
+
     eventsList.appendChild(div);
 }
 
