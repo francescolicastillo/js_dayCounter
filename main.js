@@ -27,10 +27,9 @@ function addEvent() {
             dateEvent: eventDate.value,
             idEvent: Date.now(),
         }
-        // eventInput.value = "";
-        // eventDate.value = "";
         stateEvents.push(event);
-        setEvent(event);
+        setEventHTML(event);
+        cleanState();
     }
 }
 
@@ -38,7 +37,12 @@ const isValid = () => {
     return eventInput.value.length && eventDate.value.length && (new Date(eventDate.value) > new Date(Date.now()));
 }
 
-const setEvent = (event) => {
+const cleanState = () => {
+    eventInput.value = "";
+    eventDate.value = "";
+}
+
+const setEventHTML = (event) => {
     const div = document.createElement("div");
     const divTimer = document.createElement("div");
     const nodeTime = document.createTextNode(event.dateEvent);
