@@ -43,18 +43,20 @@ const cleanState = () => {
 }
 
 const setEventHTML = (event) => {
-    const div = document.createElement("div");
+    const divContainer = document.createElement("div");
     const divTimer = document.createElement("div");
+    
+    const divDate = document.createElement("div");
     const nodeTime = document.createTextNode(event.dateEvent);
     divTimer.appendChild(nodeTime);
 
     const para = document.createElement("p");
     const node = document.createTextNode(event.titleEvent);
     para.appendChild(node);
-    div.appendChild(divTimer);
-    div.appendChild(para);
+    divContainer.appendChild(divDate);
+    divContainer.appendChild(para);
 
-    eventsList.appendChild(div);
+    eventsList.appendChild(divContainer);
 }
 
 
