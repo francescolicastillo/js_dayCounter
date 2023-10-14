@@ -40,11 +40,6 @@ const cleanState = () => {
 const setEventHTML = (event) => {
     const divContainer = document.createElement("div");
     divContainer.setAttribute("id", event.idEvent);
-
-    const divTimer = document.createElement("div");
-    divTimer.setAttribute("class", "restTime");
-    const nodeTimer = document.createTextNode(new Date(event.dateEvent) - new Date(Date.now()));
-    divTimer.appendChild(nodeTimer);
     
     const divDate = document.createElement("div");
     divDate.setAttribute("class", "dateEvent");
@@ -56,12 +51,32 @@ const setEventHTML = (event) => {
     const node = document.createTextNode(event.titleEvent);
     para.appendChild(node);
 
-    divContainer.appendChild(divTimer);
+    const divTimer = document.createElement("div");
+    divTimer.setAttribute("class", "restTime");
+    const nodeTimer = document.createTextNode(formatTime(new Date(event.dateEvent) - new Date(Date.now())));
+    divTimer.appendChild(nodeTimer);
+
     divContainer.appendChild(divDate);
     divContainer.appendChild(para);
+    divContainer.appendChild(divTimer);
 
     eventsList.appendChild(divContainer);
-    startInterval(event.idEvent);
+    // startInterval(event.idEvent);
+}
+
+const formatTime = (time) => {
+    console.log(time);
+    let timeFormated = (
+            (Math.floor(time/86400000) < 10 ? ("0" + Math.floor(time/86400000)) : Math.floor(time/86400000))
+            + ":"
+            + (Math.floor(time/3600000) < 10 ? ("0" + Math.floor(time/3600000)) : Math.floor(time%3600000))
+            + ":" 
+            + (Math.floor(time/60000) < 10 ? ("0" + Math.floor(time/60000)) : Math.floor(time%60000))
+            + ":" 
+            + ((time%60) < 10 ? ("0"+(time%60)) : (time%60))
+        );
+    console.log(timeFormated);
+    return timeFormated;
 }
 
 const startInterval = (id) => {
