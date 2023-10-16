@@ -25,6 +25,8 @@ function addEvent() {
         stateEvents.push(event);
         setEventHTML(event);
         cleanState();
+    } else{
+        alert("Not valid input!")
     }
 }
 
@@ -66,6 +68,40 @@ const setEventHTML = (event) => {
 
 const formatTime = (time) => {
     console.log(time);
+    let outPut = "";
+    let copy = JSON.parse(JSON.stringify(time));
+    if(copy >= 86400000) {
+        const manyTimes = Math.floor(copy/86400000);
+        outPut += (manyTimes < 10 ? ("0" + Math.floor(copy/86400000)) : Math.floor(copy/86400000)) + ":";
+        copy -= (manyTimes*86400000);
+    } else {
+        console.log("days");
+        outPut += "00:";
+    }
+    if(copy >= 3600000) {
+        const manyTimes = Math.floor(copy/3600000);
+        outPut += (manyTimes < 10 ? ("0" + Math.floor(copy/3600000)) : Math.floor(copy/3600000)) + ":";
+        copy -= (manyTimes*3600000);
+    } else {
+        console.log("hours");
+        outPut += "00:";
+    }
+    if(copy >= 60000) {
+        const manyTimes = Math.floor(copy/60000);
+        outPut += (manyTimes < 10 ? ("0" + Math.floor(copy/60000)) : Math.floor(copy/60000)) + ":";
+        copy -= (manyTimes*60000);
+    } else {
+        console.log("minutes");
+        outPut += "00:";
+    }
+    if(copy >= 600) {
+        const manyTimes = Math.floor(copy/600);
+        outPut += (manyTimes < 10 ? ("0" + Math.floor(copy/600)) : Math.floor(copy/600));
+        copy -= (manyTimes*600);
+    } else {
+        console.log("seconds");
+        outPut += "00";
+    }
     let timeFormated = (
             (Math.floor(time/86400000) < 10 ? ("0" + Math.floor(time/86400000)) : Math.floor(time/86400000))
             + ":"
@@ -76,6 +112,7 @@ const formatTime = (time) => {
             + ((time%60) < 10 ? ("0"+(time%60)) : (time%60))
         );
     console.log(timeFormated);
+    console.log(outPut);
     return timeFormated;
 }
 
