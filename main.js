@@ -21,6 +21,7 @@ function addEvent() {
             titleEvent: eventInput.value,
             dateEvent: eventDate.value,
             idEvent: Date.now(),
+            intervalId: 0,
         }
         stateEvents.push(event);
         setEventHTML(event);
@@ -63,7 +64,7 @@ const setEventHTML = (event) => {
     divContainer.appendChild(divTimer);
 
     eventsList.appendChild(divContainer);
-    // startInterval(event.idEvent);
+    startInterval(event);
 }
 
 const formatTime = (time) => {
@@ -97,22 +98,15 @@ const formatTime = (time) => {
     return outPut;
 }
 
-const startInterval = (id) => {
-    const htmlElement = document.getElementById(id);
+const startInterval = (event) => {
+    const htmlElement = document.getElementById(event.idEvent);
+    console.log(htmlElement);
     let restTime = htmlElement.querySelector(".restTime");
     console.log(restTime);
-    const intervalId = setInterval(() => {
-        restTime.innerHTML -= 1;
-        console.log(restTime);
-
-        // timer.innerHTML = (
-        //     (Math.floor(counter/60) < 10 ? ("0" + Math.floor(counter/60)) : Math.floor(counter/60))
-        //     + ":" 
-        //     + ((counter%60) < 10 ? ("0"+(counter%60)) : (counter%60))
-        // );
-        if(restTime === 0) {
-            // clearInterval(intervalId);
-            // setFinishedTasks();
+    event.intervalId = setInterval(() => {
+        restTime.innerHTML = formatTime(new Date(event.dateEvent) - new Date(Date.now()));
+        if((new Date(event.dateEvent) - new Date(Date.now())) === 0) {
+            event.intervalId = null;
             console.log("finished");
         }
     }, 1000);
