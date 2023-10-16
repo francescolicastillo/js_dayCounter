@@ -105,7 +105,7 @@ const startInterval = (event) => {
     console.log(restTime);
     event.intervalId = setInterval(() => {
         restTime.innerHTML = formatTime(new Date(event.dateEvent) - new Date(Date.now()));
-        if((new Date(event.dateEvent) - new Date(Date.now())) === 0) {
+        if((new Date(event.dateEvent) - new Date(Date.now())) <= 0) {
             event.intervalId = null;
             console.log("finished");
         }
