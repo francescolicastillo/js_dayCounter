@@ -59,12 +59,19 @@ const setEventHTML = (event) => {
     const nodeTimer = document.createTextNode(formatTime(new Date(event.dateEvent) - new Date(Date.now())));
     divTimer.appendChild(nodeTimer);
 
+    const deletebtn = document.createElement("button");
+    deletebtn.setAttribute("id", "delete-"+event.idEvent);
+    const deleteIcon = document.createTextNode("Delete");
+    deletebtn.appendChild(deleteIcon);
+
     divContainer.appendChild(divDate);
     divContainer.appendChild(para);
     divContainer.appendChild(divTimer);
+    divContainer.appendChild(deletebtn);
 
     eventsList.appendChild(divContainer);
     startInterval(event);
+    setEventToDelete(event);
 }
 
 const formatTime = (time) => {
@@ -110,6 +117,15 @@ const startInterval = (event) => {
     }, 1000);
 }
 
+const setEventToDelete = (event) => {
+    const deletebtn = document.getElementById("delete-"+event.idEvent);
+    deletebtn.addEventListener("click", handlerDelete);
+}
+
+const handlerDelete = (e) => {
+    console.log(e.target.id);
+    
+}
 
 form.addEventListener("submit", handlerSubmit);
 eventInput.addEventListener("keydown", handlerInputSpace);
