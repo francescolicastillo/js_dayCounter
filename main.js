@@ -21,7 +21,7 @@ function addEvent() {
             titleEvent: eventInput.value,
             dateEvent: eventDate.value,
             idEvent: Date.now(),
-            intervalId: 0,
+            intervalEvent: 0,
         }
         stateEvents.push(event);
         setEventHTML(event);
@@ -100,14 +100,12 @@ const formatTime = (time) => {
 
 const startInterval = (event) => {
     const htmlElement = document.getElementById(event.idEvent);
-    console.log(htmlElement);
     let restTime = htmlElement.querySelector(".restTime");
-    console.log(restTime);
-    event.intervalId = setInterval(() => {
+    event.intervalEvent = setInterval(() => {
         restTime.innerHTML = formatTime(new Date(event.dateEvent) - new Date(Date.now()));
         if((new Date(event.dateEvent) - new Date(Date.now())) <= 0) {
-            event.intervalId = null;
-            console.log("finished");
+            restTime.innerHTML = "Finished";
+            clearInterval(event.intervalEvent);
         }
     }, 1000);
 }
