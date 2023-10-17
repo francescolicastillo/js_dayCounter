@@ -1,0 +1,41 @@
+body {
+    background-color: aliceblue;
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),  url(image/time_clocks.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+main {
+    margin-top: 15px;
+    padding: 10px 5%;
+    font-size: 1.5rem;
+    background-color: rgba(61, 61, 61, 0.2);
+}
+
+#form-newEvent label, #form-newEvent input, #form-newEvent button{
+    display: block;
+    margin: 8px auto;
+    font-size: 1.2rem;
+}
+
+#form-newEvent label {
+    max-width: 249px;
+    margin-top: 25px;
+}
+
+#dateInput {
+    width: 249px;
+    cursor: pointer;
+}
+
+#form-newEvent #submit-btn {
+    margin-top: 25px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+#form-newEvent #submit-btn:hover {
+    background-color: rgb(182, 182, 182);
+}
