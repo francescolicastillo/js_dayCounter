@@ -3,7 +3,7 @@ const eventsList = document.querySelector("#events");
 const eventInput = document.querySelector("#event-input");
 const eventDate = document.querySelector("#dateInput");
 
-const stateEvents = [];
+let stateEvents = [];
 
 const handlerSubmit = (e) => {
     e.preventDefault();
@@ -123,8 +123,9 @@ const setEventToDelete = (event) => {
 }
 
 const handlerDelete = (e) => {
-    console.log(e.target.id);
-    
+    const deleteEvent = e.target.id.split("-")[1];
+    document.getElementById(deleteEvent).remove();
+    stateEvents = stateEvents.filter((event) => event.idEvent != deleteEvent);
 }
 
 form.addEventListener("submit", handlerSubmit);
