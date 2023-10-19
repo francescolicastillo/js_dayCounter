@@ -43,7 +43,10 @@ const cleanState = () => {
 const setEventHTML = (event) => {
     const divContainer = document.createElement("div");
     divContainer.setAttribute("id", event.idEvent);
-    
+
+    const divContainerDescription = document.createElement("div");
+    divContainerDescription.setAttribute("class", "description");
+
     const divDate = document.createElement("div");
     divDate.setAttribute("class", "dateEvent");
     const nodeTime = document.createTextNode(event.dateEvent);
@@ -54,6 +57,9 @@ const setEventHTML = (event) => {
     const node = document.createTextNode(event.titleEvent);
     para.appendChild(node);
 
+    divContainerDescription.appendChild(divDate);
+    divContainerDescription.appendChild(para);
+
     const divTimer = document.createElement("div");
     divTimer.setAttribute("class", "restTime");
     const nodeTimer = document.createTextNode(formatTime(new Date(event.dateEvent) - new Date(Date.now())));
@@ -61,11 +67,11 @@ const setEventHTML = (event) => {
 
     const deletebtn = document.createElement("button");
     deletebtn.setAttribute("id", "delete-"+event.idEvent);
+    deletebtn.setAttribute("class", "btn-delete");
     const deleteIcon = document.createTextNode("Delete");
     deletebtn.appendChild(deleteIcon);
 
-    divContainer.appendChild(divDate);
-    divContainer.appendChild(para);
+    divContainer.appendChild(divContainerDescription);
     divContainer.appendChild(divTimer);
     divContainer.appendChild(deletebtn);
 
