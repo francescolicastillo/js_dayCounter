@@ -62,7 +62,7 @@ const setEventHTML = (event) => {
 
     const divTimer = document.createElement("div");
     divTimer.setAttribute("class", "restTime");
-    const nodeTimer = document.createTextNode(formatTime(new Date(event.dateEvent) - new Date(Date.now())));
+    const nodeTimer = document.createTextNode(formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now())));
     divTimer.appendChild(nodeTimer);
 
     const deletebtn = document.createElement("button");
@@ -78,6 +78,12 @@ const setEventHTML = (event) => {
     eventsList.appendChild(divContainer);
     startInterval(event);
     setEventToDelete(event);
+}
+
+const formatScreenRemainingTime = (time) => {
+    let fTime = formatTime(time);
+    let arrayTime = fTime.split(":");
+    return fTime;
 }
 
 const formatTime = (time) => {
@@ -115,7 +121,7 @@ const startInterval = (event) => {
     const htmlElement = document.getElementById(event.idEvent);
     let restTime = htmlElement.querySelector(".restTime");
     event.intervalEvent = setInterval(() => {
-        restTime.innerHTML = formatTime(new Date(event.dateEvent) - new Date(Date.now()));
+        restTime.innerHTML = formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now()));
         if((new Date(event.dateEvent) - new Date(Date.now())) <= 0) {
             restTime.innerHTML = "Finished";
             clearInterval(event.intervalEvent);

@@ -40,15 +40,28 @@ main {
     background-color: rgb(182, 182, 182);
 }
 
-.restTime { grid-area: header; }
-.description { grid-area: main; }
-.btn-delete { grid-area: right; }
+.description {
+    text-align: center;
+}
+
+.dateEvent {
+    margin-top: 15px;
+}
+
+.titleEvent{
+    margin: 15px;
+}
+
+.restTime { grid-area: counter; }
+.description { grid-area: event; }
+.btn-delete { grid-area: button; }
 
 #events > div {
-  display: grid;
-  grid-template-areas:
-    'header header header header'
-    'main main main right';
-  gap: 10px;
-  padding: 10px;
+    display: grid;
+    grid-template-areas:
+        'counter counter counter counter counter'
+        'event event event event button';
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(240, 248, 255, 0.548);
 }
