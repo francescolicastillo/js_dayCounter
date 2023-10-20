@@ -62,7 +62,7 @@ const setEventHTML = (event) => {
 
     const divTimer = document.createElement("div");
     divTimer.setAttribute("class", "restTime");
-    const nodeTimer = document.createTextNode(formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now())));
+    const nodeTimer = (formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now())));
     divTimer.appendChild(nodeTimer);
 
     const deletebtn = document.createElement("button");
@@ -83,7 +83,53 @@ const setEventHTML = (event) => {
 const formatScreenRemainingTime = (time) => {
     let fTime = formatTime(time);
     let arrayTime = fTime.split(":");
-    return fTime;
+
+    const dayDiv = document.createElement("div");
+    const dayNumberDiv = document.createElement("div");
+    const dayNumberTxt = document.createTextNode(arrayTime[0]);
+    dayNumberDiv.appendChild(dayNumberTxt);
+    const dayTxtDiv = document.createElement("div");
+    const dayText = document.createTextNode("Days");
+    dayTxtDiv.appendChild(dayText);
+    dayDiv.appendChild(dayNumberDiv);
+    dayDiv.appendChild(dayTxtDiv);
+
+    const hourDiv = document.createElement("div");
+    const hourNumberDiv = document.createElement("div");
+    const hourNumberTxt = document.createTextNode(arrayTime[1]);
+    hourNumberDiv.appendChild(hourNumberTxt);
+    const hourTxtDiv = document.createElement("div");
+    const hourText = document.createTextNode("Hours");
+    hourTxtDiv.appendChild(hourText);
+    hourDiv.appendChild(hourNumberDiv);
+    hourDiv.appendChild(hourTxtDiv);
+
+    const minuteDiv = document.createElement("div");
+    const minuteNumberDiv = document.createElement("div");
+    const minuteNumberTxt = document.createTextNode(arrayTime[2]);
+    minuteNumberDiv.appendChild(minuteNumberTxt);
+    const minuteTxtDiv = document.createElement("div");
+    const minuteText = document.createTextNode("Minutes");
+    minuteTxtDiv.appendChild(minuteText);
+    minuteDiv.appendChild(minuteNumberDiv);
+    minuteDiv.appendChild(minuteTxtDiv);
+
+    const secondDiv = document.createElement("div");
+    const secondNumberDiv = document.createElement("div");
+    const secondNumberTxt = document.createTextNode(arrayTime[3]);
+    secondNumberDiv.appendChild(secondNumberTxt);
+    const secondTxtDiv = document.createElement("div");
+    const secondText = document.createTextNode("Seconds");
+    secondTxtDiv.appendChild(secondText);
+    secondDiv.appendChild(secondNumberDiv);
+    secondDiv.appendChild(secondTxtDiv);
+
+    const contDiv = document.createElement("div");
+    contDiv.appendChild(dayDiv);
+    contDiv.appendChild(hourDiv);
+    contDiv.appendChild(minuteDiv);
+    contDiv.appendChild(secondDiv);
+    return contDiv;
 }
 
 const formatTime = (time) => {
@@ -121,7 +167,7 @@ const startInterval = (event) => {
     const htmlElement = document.getElementById(event.idEvent);
     let restTime = htmlElement.querySelector(".restTime");
     event.intervalEvent = setInterval(() => {
-        restTime.innerHTML = formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now()));
+        // restTime.innerHTML = formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now()));
         if((new Date(event.dateEvent) - new Date(Date.now())) <= 0) {
             restTime.innerHTML = "Finished";
             clearInterval(event.intervalEvent);
