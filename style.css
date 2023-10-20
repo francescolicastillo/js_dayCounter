@@ -65,3 +65,14 @@ main {
     padding: 10px;
     background-color: rgba(240, 248, 255, 0.548);
 }
+
+.btn-delete {
+    background-color: rgb(255, 97, 97);
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0;
+}
+
+.btn-delete:hover {
+    background-color: red;
+}
