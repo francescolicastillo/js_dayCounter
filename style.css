@@ -76,3 +76,7 @@ main {
 .btn-delete:hover {
     background-color: red;
 }
+
+.restTime > div {
+    display: flex;
+}
