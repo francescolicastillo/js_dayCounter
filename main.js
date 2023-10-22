@@ -89,6 +89,7 @@ const formatScreenRemainingTime = (time) => {
     const dayNumberTxt = document.createTextNode(arrayTime[0]);
     dayNumberDiv.appendChild(dayNumberTxt);
     const dayTxtDiv = document.createElement("div");
+    dayTxtDiv.setAttribute("class", "label-txt");
     const dayText = document.createTextNode("Days");
     dayTxtDiv.appendChild(dayText);
     dayDiv.appendChild(dayNumberDiv);
@@ -99,6 +100,7 @@ const formatScreenRemainingTime = (time) => {
     const hourNumberTxt = document.createTextNode(arrayTime[1]);
     hourNumberDiv.appendChild(hourNumberTxt);
     const hourTxtDiv = document.createElement("div");
+    hourTxtDiv.setAttribute("class", "label-txt");
     const hourText = document.createTextNode("Hours");
     hourTxtDiv.appendChild(hourText);
     hourDiv.appendChild(hourNumberDiv);
@@ -109,6 +111,7 @@ const formatScreenRemainingTime = (time) => {
     const minuteNumberTxt = document.createTextNode(arrayTime[2]);
     minuteNumberDiv.appendChild(minuteNumberTxt);
     const minuteTxtDiv = document.createElement("div");
+    minuteTxtDiv.setAttribute("class", "label-txt");
     const minuteText = document.createTextNode("Minutes");
     minuteTxtDiv.appendChild(minuteText);
     minuteDiv.appendChild(minuteNumberDiv);
@@ -119,6 +122,7 @@ const formatScreenRemainingTime = (time) => {
     const secondNumberTxt = document.createTextNode(arrayTime[3]);
     secondNumberDiv.appendChild(secondNumberTxt);
     const secondTxtDiv = document.createElement("div");
+    secondTxtDiv.setAttribute("class", "label-txt");
     const secondText = document.createTextNode("Seconds");
     secondTxtDiv.appendChild(secondText);
     secondDiv.appendChild(secondNumberDiv);

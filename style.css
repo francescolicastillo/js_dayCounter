@@ -77,6 +77,19 @@ main {
     background-color: red;
 }
 
-.restTime > div {
+.restTime > div  {
     display: flex;
+}
+
+.restTime {
+    margin: 0 auto;
+}
+
+.restTime > div > div {
+    margin: 0 10px;
+    text-align: center;
+}
+
+.label-txt {
+    font-size: 1.2rem;
 }
