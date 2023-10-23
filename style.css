@@ -86,8 +86,11 @@ main {
 }
 
 .restTime > div > div {
-    margin: 0 10px;
+    padding: 15px 6px;
+    margin: 0 5px;
     text-align: center;
+    background-color: rgba(128, 128, 128, 0.24);
+    border-radius: 10px;
 }
 
 .label-txt {

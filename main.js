@@ -171,7 +171,9 @@ const startInterval = (event) => {
     const htmlElement = document.getElementById(event.idEvent);
     let restTime = htmlElement.querySelector(".restTime");
     event.intervalEvent = setInterval(() => {
-        restTime = formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now()));
+        let a = restTime.querySelector("div");
+        restTime.removeChild(a);
+        restTime.appendChild(formatScreenRemainingTime(new Date(event.dateEvent) - new Date(Date.now())));
         if((new Date(event.dateEvent) - new Date(Date.now())) <= 0) {
             restTime.innerHTML = "Finished";
             clearInterval(event.intervalEvent);
