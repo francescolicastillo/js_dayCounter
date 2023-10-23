@@ -5,10 +5,13 @@ body {
 }
 
 main {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     padding: 10px 5%;
     font-size: 1.5rem;
     background-color: rgba(61, 61, 61, 0.2);
+    font-family: 'Lato', sans-serif;
+    max-width: 750px;
+    margin: 15px auto ;
 }
 
 #form-newEvent label, #form-newEvent input, #form-newEvent button{
@@ -40,7 +43,9 @@ main {
     background-color: rgb(182, 182, 182);
 }
 
+
 .description {
+    grid-area: event;
     text-align: center;
 }
 
@@ -50,39 +55,50 @@ main {
 
 .titleEvent{
     margin: 15px;
+    font-weight: bold;
 }
 
-.restTime { grid-area: counter; }
-.description { grid-area: event; }
-.btn-delete { grid-area: button; }
-
-#events > div {
-    display: grid;
-    grid-template-areas:
-        'counter counter counter counter counter'
-        'event event event event button';
-    gap: 10px;
-    padding: 10px;
-    background-color: rgba(240, 248, 255, 0.548);
-}
-
-.btn-delete {
+.btn-delete { 
+    grid-area: button; 
     background-color: rgb(255, 97, 97);
     cursor: pointer;
     border-radius: 10px;
     border: 0;
+    max-width: 70px;
+    margin: auto 0;
+    padding-block: 15px;
 }
 
 .btn-delete:hover {
     background-color: red;
 }
 
-.restTime > div  {
-    display: flex;
+.restTime { 
+    grid-area: counter; 
+    margin: 0 auto;
+    place-self: center;
 }
 
-.restTime {
-    margin: 0 auto;
+#events > div {
+    display: grid;
+    grid-template-areas:
+        'event counter counter button';
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.664);
+    border-top: 1px solid rgba(0, 0, 0, 0.253);
+}
+
+@media screen and (max-width: 750px) {
+    #events > div {
+        grid-template-areas:
+            'counter counter counter counter'
+            'event event event button';
+    }
+}
+
+.restTime > div  {
+    display: flex;
 }
 
 .restTime > div > div {
@@ -94,5 +110,5 @@ main {
 }
 
 .label-txt {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }

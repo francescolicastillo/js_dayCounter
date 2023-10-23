@@ -49,7 +49,7 @@ const setEventHTML = (event) => {
 
     const divDate = document.createElement("div");
     divDate.setAttribute("class", "dateEvent");
-    const nodeTime = document.createTextNode(event.dateEvent);
+    const nodeTime = document.createTextNode(new Date(event.dateEvent).toLocaleString());
     divDate.appendChild(nodeTime);
 
     const para = document.createElement("p");
@@ -68,7 +68,10 @@ const setEventHTML = (event) => {
     const deletebtn = document.createElement("button");
     deletebtn.setAttribute("id", "delete-"+event.idEvent);
     deletebtn.setAttribute("class", "btn-delete");
-    const deleteIcon = document.createTextNode("Delete");
+    deletebtn.setAttribute("title", "Delete");
+    const deleteIcon = document.createElement("img");
+    deleteIcon.setAttribute("src", "image/delete_forever_FILL0_wght400_GRAD0_opsz24.svg");
+    deleteIcon.setAttribute("id", "delImg-"+event.idEvent);
     deletebtn.appendChild(deleteIcon);
 
     divContainer.appendChild(divContainerDescription);
